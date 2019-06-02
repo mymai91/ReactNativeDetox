@@ -10,7 +10,7 @@ const Init = ({ navigation }) => {
 
   getData = async () => {
     try {
-      const value = await AsyncStorage.getItem('@userName')
+      const value = await AsyncStorage.getItem('@awesome:userName')
       const mainPage = !!value ? 'home' : 'login'
       const resetAction = StackActions.reset({
         index: 0,

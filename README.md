@@ -15,6 +15,20 @@ npm install react-native-paper
 npm install react-native-vector-icons
 
 react-native link react-native-vector-icons
+
+yarn add @react-native-community/async-storage
+
+react-native link @react-native-community/async-storage
+```
+
+**react navigation**
+
+```
+npm install --save react-navigation
+
+yarn add react-native-gesture-handler
+
+react-native link react-native-gesture-handler
 ```
 
 ## Install Detox
@@ -137,3 +151,36 @@ globals: {
 }
 
 ```
+
+### Demo
+
+Requirment is: If you have not login yet you should see Login screen else should see Home screen
+
+This is test case
+```
+describe('App', () => {
+  beforeEach(async () => {
+    await device.reloadReactNative()
+  })
+
+  describe('Have not login yet', () => {
+    it('should show up Login screen', async () => {
+      await expect(element(by.id('login_title'))).toBeVisible()
+    })
+
+    it('should redirect to Home screen when login successfully', async () => {
+      await expect(element(by.id('login_userName'))).toBeVisible()
+      await element(by.id('login_userName')).typeText('janymai')
+      await element(by.id('login_password')).typeText('password')
+      await element(by.id('login_button')).tap()
+      await expect(element(by.id('home_title'))).toBeVisible()
+    })
+  })
+})
+```
+
+**NOTE** If your test case fail in `.typeText` please make sure you **disable** connect hardware keyboard
+
+Should turn on emulator then follow step bellow:
+
+<img width="1222" alt="Screenshot_2_6_19__11_27_PM" src="https://user-images.githubusercontent.com/6791942/58763513-330f4600-858e-11e9-910b-dce00553fa90.png">
