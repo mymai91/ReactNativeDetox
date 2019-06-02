@@ -1,21 +1,22 @@
-import React, { useState, useEffect } from 'react'
-import { Provider as PaperProvider } from 'react-native-paper'
-import { Text } from 'react-native'
-import Home from './src/screens/Home.js'
-import Login from './src/screens/Login.js'
+import React from 'react'
+import { createStackNavigator, createAppContainer } from 'react-navigation'
 
-const App = () => {
-  const [authenticated, setAuthenticated] = useState(false)
+import HomeScreen from './src/screens/Home.js'
+import LoginScreen from './src/screens/Login.js'
+import InitScreen from './src/screens/Init.js'
 
-  useEffect(() => {
-    console.log('authenticated', authenticated)
-  }, [])
-  return (
-    <PaperProvider>
-      <Text testID="appTitle">Hilo I am Jany</Text>
-      {authenticated ? <Home /> : <Login />}
-    </PaperProvider>
-  )
-}
+const MainNavigator = createStackNavigator(
+  {
+    home: { screen: HomeScreen },
+    login: { screen: LoginScreen },
+    initScreen: { screen: InitScreen },
+  },
+  {
+    // Default config for all screens
+    initialRouteName: 'initScreen',
+  }
+)
+
+const App = createAppContainer(MainNavigator)
 
 export default App

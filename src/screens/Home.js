@@ -4,15 +4,8 @@ import { Text } from 'react-native'
 const Home = () => {
   return (
     <Fragment>
-      <Text>Hi! Home page</Text>
-      <Text>Hi! Home page</Text>
-      <Text>Hi! Home page</Text>
-      <Text>Hi! Home page</Text>
-      <Text>Hi! Home page</Text>
-      <Text>Hi! Home page</Text>
-      <Text>Hi! Home page</Text>
-      <Text>Hi! Home page</Text>
-      <Text>Hi! Home page</Text>
+      <Text>Hello</Text>
+      <Text testID="home_title">This is Home Page</Text>
     </Fragment>
   )
 }
